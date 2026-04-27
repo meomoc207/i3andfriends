@@ -1,0 +1,180 @@
+/*
+ * Rofi configuration — Rosé Pine (pink accent)
+ * Matches the i3wm config color scheme.
+ *
+ * Install location: ~/.config/rofi/config.rasi
+ * Invoke with:      rofi -show drun   (already bound to $mod+r in your i3)
+ *
+ * Font: JetBrainsMonoNL Nerd Font Mono @ 15
+ * If rofi can't find the font, run `fc-list | grep -i jetbrains` to get
+ * the exact Pango family name your system reports and paste it below.
+ */
+
+configuration {
+    modi:                  "drun,run,window";
+    show-icons:            true;
+    display-drun:          "Apps";
+    display-run:           "Run";
+    display-window:        "Windows";
+    drun-display-format:   "{name}";
+    window-format:         "{w} · {c} · {t}";
+    font:                  "JetBrainsMonoNL Nerd Font Mono 15";
+    terminal:              "kitty";
+    sidebar-mode:          false;
+    hover-select:          true;
+    me-select-entry:       "";
+    me-accept-entry:       "MousePrimary";
+    /* Uncomment and set an icon theme you actually have installed
+       (e.g. Papirus-Dark, Tela-circle, Adwaita). */
+    /* icon-theme:         "Papirus-Dark"; */
+}
+
+/* ──────────────── Rosé Pine palette ──────────────── */
+* {
+    rp-base:           #191724;
+    rp-surface:        #1f1d2e;
+    rp-overlay:        #26233a;
+    rp-muted:          #6e6a86;
+    rp-subtle:         #908caa;
+    rp-text:           #e0def4;
+    rp-love:           #eb6f92;  /* primary pink accent */
+    rp-gold:           #f6c177;
+    rp-rose:           #ebbcba;  /* soft pink */
+    rp-pine:           #31748f;
+    rp-foam:           #9ccfd8;
+    rp-iris:           #c4a7e7;
+    rp-highlight-low:  #21202e;
+    rp-highlight-med:  #403d52;
+    rp-highlight-high: #524f67;
+
+    background-color:  transparent;
+    text-color:        @rp-text;
+}
+
+/* ──────────────── Window ──────────────── */
+window {
+    transparency:     "real";
+    background-color: @rp-base;
+    border:           2px;
+    border-color:     @rp-love;
+    border-radius:    12px;
+    width:            40%;
+    padding:          20px;
+    children:         [ inputbar, message, listview ];
+}
+
+mainbox {
+    background-color: transparent;
+    spacing:          12px;
+    children:         [ inputbar, message, listview ];
+}
+
+/* ──────────────── Input bar ──────────────── */
+inputbar {
+    background-color: @rp-surface;
+    text-color:       @rp-text;
+    padding:          12px 14px;
+    border-radius:    8px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @rp-love;
+    padding:          0 8px 0 0;
+}
+
+entry {
+    background-color:  transparent;
+    text-color:        @rp-text;
+    placeholder:       "Search…";
+    placeholder-color: @rp-muted;
+    cursor:            text;
+}
+
+/* ──────────────── Message / errors ──────────────── */
+message {
+    background-color: @rp-surface;
+    text-color:       @rp-rose;
+    padding:          10px 12px;
+    border-radius:    8px;
+    margin:           10px 0 0 0;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @rp-rose;
+}
+
+/* ──────────────── List ──────────────── */
+listview {
+    background-color: transparent;
+    columns:          1;
+    lines:            8;
+    spacing:          4px;
+    margin:           12px 0 0 0;
+    scrollbar:        false;
+    cycle:            true;
+    dynamic:          true;
+    fixed-height:     true;
+}
+
+/* ──────────────── Entries ──────────────── */
+element {
+    background-color: transparent;
+    text-color:       @rp-text;
+    padding:          10px 12px;
+    border-radius:    8px;
+    spacing:          10px;
+    cursor:           pointer;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @rp-text;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @rp-text;
+}
+
+element normal.active {
+    background-color: transparent;
+    text-color:       @rp-rose;
+}
+
+element normal.urgent {
+    background-color: transparent;
+    text-color:       @rp-gold;
+}
+
+element selected.normal {
+    background-color: @rp-love;
+    text-color:       @rp-base;
+}
+
+element selected.active {
+    background-color: @rp-rose;
+    text-color:       @rp-base;
+}
+
+element selected.urgent {
+    background-color: @rp-gold;
+    text-color:       @rp-base;
+}
+
+element-icon {
+    background-color: transparent;
+    size:             1.2em;
+    vertical-align:   0.5;
+    cursor:           inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+    cursor:           inherit;
+}

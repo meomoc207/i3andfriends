@@ -1,0 +1,182 @@
+/*
+ * Rofi configuration — Rosé Pine (pink accent)
+ * Matches the i3wm config color scheme.
+ *
+ * Install location: ~/.config/rofi/config.rasi
+ * Invoke with:      rofi -show drun   (already bound to $mod+r in your i3)
+ *
+ * Font: JetBrainsMonoNL Nerd Font Mono @ 15
+ * If rofi can't find the font, run `fc-list | grep -i jetbrains` to get
+ * the exact Pango family name your system reports and paste it below.
+ */
+
+configuration {
+    modi:                  "drun,run,window";
+    show-icons:            true;
+    display-drun:          "Apps";
+    display-run:           "Run";
+    display-window:        "Windows";
+    drun-display-format:   "{name}";
+    window-format:         "{w} · {c} · {t}";
+    font:                  "JetBrainsMonoNL Nerd Font Mono 15";
+    terminal:              "kitty";
+    sidebar-mode:          false;
+    hover-select:          true;
+    me-select-entry:       "";
+    me-accept-entry:       "MousePrimary";
+    /* Uncomment and set an icon theme you actually have installed
+       (e.g. Papirus-Dark, Tela-circle, Adwaita). */
+    /* icon-theme:         "Papirus-Dark"; */
+}
+
+/* ──────────────── Base16 Black Metal palette ──────────────── */
+/* Source: https://github.com/metalelf0/base16-black-metal-scheme (MIT) */
+* {
+    base00:           #000000;  /* background          */
+    base01:           #121212;  /* lighter background  */
+    base02:           #222222;  /* selection / overlay */
+    base03:           #333333;  /* comments, subtle    */
+    base04:           #999999;  /* muted foreground    */
+    base05:           #c1c1c1;  /* default foreground  */
+    base06:           #999999;
+    base07:           #c1c1c1;
+    base08:           #5f8787;  /* "red"     → teal    */
+    base09:           #aaaaaa;
+    base0A:           #a06666;  /* "yellow"  → rose    */
+    base0B:           #dd9999;  /* "green"   → pink ★  */
+    base0C:           #aaaaaa;
+    base0D:           #888888;
+    base0E:           #999999;
+    base0F:           #444444;
+
+    background-color: transparent;
+    text-color:       @base05;
+}
+
+/* ──────────────── Window ──────────────── */
+window {
+    transparency:     "real";
+    background-color: @base00;
+    border:           2px;
+    border-color:     @base0B;
+    border-radius:    12px;
+    width:            40%;
+    padding:          20px;
+    children:         [ inputbar, message, listview ];
+}
+
+mainbox {
+    background-color: transparent;
+    spacing:          12px;
+    children:         [ inputbar, message, listview ];
+}
+
+/* ──────────────── Input bar ──────────────── */
+inputbar {
+    background-color: @base01;
+    text-color:       @base05;
+    padding:          12px 14px;
+    border-radius:    8px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @base0B;
+    padding:          0 8px 0 0;
+}
+
+entry {
+    background-color:  transparent;
+    text-color:        @base05;
+    placeholder:       "Search…";
+    placeholder-color: @base04;
+    cursor:            text;
+}
+
+/* ──────────────── Message / errors ──────────────── */
+message {
+    background-color: @base01;
+    text-color:       @base0A;
+    padding:          10px 12px;
+    border-radius:    8px;
+    margin:           10px 0 0 0;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @base0A;
+}
+
+/* ──────────────── List ──────────────── */
+listview {
+    background-color: transparent;
+    columns:          1;
+    lines:            8;
+    spacing:          4px;
+    margin:           12px 0 0 0;
+    scrollbar:        false;
+    cycle:            true;
+    dynamic:          true;
+    fixed-height:     true;
+}
+
+/* ──────────────── Entries ──────────────── */
+element {
+    background-color: transparent;
+    text-color:       @base05;
+    padding:          10px 12px;
+    border-radius:    8px;
+    spacing:          10px;
+    cursor:           pointer;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @base05;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @base05;
+}
+
+element normal.active {
+    background-color: transparent;
+    text-color:       @base0A;
+}
+
+element normal.urgent {
+    background-color: transparent;
+    text-color:       @base08;
+}
+
+element selected.normal {
+    background-color: @base0B;
+    text-color:       @base00;
+}
+
+element selected.active {
+    background-color: @base0A;
+    text-color:       @base00;
+}
+
+element selected.urgent {
+    background-color: @base08;
+    text-color:       @base00;
+}
+
+element-icon {
+    background-color: transparent;
+    size:             1.2em;
+    vertical-align:   0.5;
+    cursor:           inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+    cursor:           inherit;
+}
